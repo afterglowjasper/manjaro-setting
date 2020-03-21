@@ -1,0 +1,60 @@
+sudo pacman-mirrors -i -c China -m rank
+sudo pacman -Syy 
+#打开配置文件
+kate /etc/pacman.conf
+使用方法：在 /etc/pacman.conf 文件末尾添加以下两行：
+
+[archlinuxcn]
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+
+sudo pacman -Syy && sudo pacman -S archlinuxcn-keyring
+sudo pacman -S angrysearch
+sudo pacman -S google-chrome
+
+sudo pacman -S fcitx-im #默认全部安装
+sudo pacman -S fcitx-configtool
+sudo pacman -S fcitx-sogoupinyin
+
+kate ~/.xprofile
+添加以下内容
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+
+sudo pacman -Syu
+
+sudo pacman -S zsh
+
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+
+chsh -s /bin/zsh
+
+#修改时间与windows一致
+sudo timedatectl set-local-rtc 1
+
+sudo pacman -S yay
+yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
+
+sudo pacman -S foxitreader
+yay -S typora
+yay -S lantern
+
+sudo pacman -C anaconda 
+在 ~/.bashrc 中添加
+export PATH=/opt/anaconda/bin:$PATH
+source  ~/.basnrc
+
+在 ~/.zshrc 中添加
+export PATH=/opt/anaconda/bin:$PATH
+source  ~/.zsnrc
+
+conda init zsh
+conda info 
+ sudo pacman -Sy python-pytorch-cuda
+conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+
+conda create -n dive2dl-pytorch
+/home/afterglow/.conda/envs/dive2dl-pytorch/bin/pip install torch torchvision
+
+yay -S lantern-bin
